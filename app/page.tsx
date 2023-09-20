@@ -9,19 +9,25 @@ async function getData() {
   return data;
 }
 
+
+const wordings = {
+  title: "Posts",
+}
+
 export default async function IndexPage() {
   const data = (await getData()) as Post[];
+  console.log(data);
 
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <div className="space-y-2 pt-6 pb-8 md:space-y-5">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:leading-10 md:text-6xl md:leading-14">
-          All Posts
+          {wordings.title}
         </h1>
       </div>
 
       <ul>
-        {data.map(post => (
+        {data.reverse().map(post => (
           <li key={post._id} className="py-4">
             <article className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
               <div>
